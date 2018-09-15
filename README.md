@@ -1,6 +1,6 @@
 # ZiadEx
 
-**TODO: Add description**
+Elixir client library to deliver short-code SMS messages via [Ziad](http://smsads.com.br/).
 
 ## Installation
 
@@ -15,7 +15,18 @@ def deps do
 end
 ```
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/ziad_ex](https://hexdocs.pm/ziad_ex).
+## Usage
 
+Single send:
+
+```elixir
+%ZiadEx.Credential{username: "foo", password: "bar", key: "baz"}
+|> ZiadEx.send(to: "41999887766", message: "Join the army, they said")
+```
+
+Bulk send:
+
+```elixir
+%ZiadEx.Credential{username: "foo", password: "bar", key: "baz"}
+|> ZiadEx.send([%{to: "41999887766", message: "Join the army, they said"}, %{to: "41999887766", "See the world, they said"}])
+```
