@@ -1,6 +1,6 @@
 # ZiadEx
 
-Elixir client library to deliver short-code SMS messages via [Ziad](http://smsads.com.br/).
+Elixir client library to deliver short code SMS messages via [Ziad](http://smsads.com.br/).
 
 ## Installation
 
