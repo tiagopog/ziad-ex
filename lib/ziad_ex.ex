@@ -20,12 +20,12 @@ defmodule ZiadEx do
   def send(%Credential{} = credential, to: to, message: message) do
     payload = Payload.build(credential, to, message)
     HTTPoison.post(@base_url, payload, [@content_type])
-    |> Result.decode
+    |> Result.parse
   end
 
   def send(%Credential{} = credential, messages) when is_list(messages) do
     payload = Payload.build(credential, messages)
     HTTPoison.post(@base_url, payload, [@content_type])
-    |> Result.decode
+    |> Result.parse
   end
 end

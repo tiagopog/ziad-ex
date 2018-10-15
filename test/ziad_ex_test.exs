@@ -1,8 +1,8 @@
 defmodule ZiadExTest do
   use ExUnit.Case
-  doctest ZiadEx
+  # doctest ZiadEx
 
-  test "greets the world" do
-    assert ZiadEx.hello() == :world
-  end
+  # test "greets the world" do
+  #   assert ZiadEx.hello() == :world
+  # end
 end
