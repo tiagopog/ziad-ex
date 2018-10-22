@@ -37,7 +37,7 @@ defmodule ZiadEx.Result do
       %ZiadEx.Result{code: "201", id: "123", message: "Foobar", status: "100", success?: true}
 
   """
-  @spec parse({:ok, HTTPoison.Response.t}) :: ZiadEx.Result.t
+  @spec parse({:ok, HTTPoison.Response.t}) :: ZiadEx.Result.t | {:error, String.t}
   def parse({:ok, %HTTPoison.Response{body: body}}) do
     with matches <- Regex.named_captures(@response_regex, body),
          result  <- Map.new(matches, fn {k, v} -> {String.to_atom(k), v} end),
@@ -45,8 +45,18 @@ defmodule ZiadEx.Result do
          do: Map.merge(%Result{}, result)
   end
 
+  def parse(_), do: {:error, "Error while trying to parse the response"}
+
   @doc """
   Check whether the response was successful by its returning "code" and "id".
+
+  ## Examples
+
+      iex> ZiadEx.Result.success?(%{code: "201", id: "123"})
+      true
+
+      iex> ZiadEx.Result.success?(%{code: "400"})
+      false
   """
   @spec success?(map) :: boolean
   def success?(%{code: code, id: id}) when code == "201" and id != "", do: true
