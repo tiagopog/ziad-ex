@@ -1,6 +1,6 @@
 defmodule ZiadEx.Result do
   @moduledoc """
-  Deals with responses from Ziad's API.
+  Deals with Ziad's API reponses.
   """
 
   alias ZiadEx.Result
