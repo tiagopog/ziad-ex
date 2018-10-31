@@ -28,5 +28,5 @@ Bulk send:
 
 ```elixir
 %ZiadEx.Credential{username: "foo", password: "bar", key: "baz"}
-|> ZiadEx.send([%{to: "41999887766", message: "Join the army, they said"}, %{to: "41999887766", "See the world, they said"}])
+|> ZiadEx.send([%{to: "41999887766", message: "Join the army, they said"}, %{to: "41999887766", message: "See the world, they said"}])
 ```
